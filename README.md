@@ -1,0 +1,1 @@
+# angular2-express-mysql-typescript-seed
