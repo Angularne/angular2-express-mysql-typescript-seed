@@ -5,12 +5,15 @@ import {CustomersController} from './controllers/customers';
 import {CustomerController} from './controllers/customer';
 import {CustomerService} from './data_access/customer';
 import {SocketController} from "./controllers/socket";
+import {EquipmentDetailComponent} from './controllers/equipment-detail';
+
+import {EquipmentListComponent} from './controllers/equipment-list';
 
 @Component({
   selector: 'my-app',
   template: `
-  <a [routerLink]="['CustomersPath']">Customers</a>
   <a [routerLink]="['SocketPath']">Socket</a>
+  <a [routerLink]="['EquipmentsPath']">Equipment</a>
   <br>
   <router-outlet></router-outlet>`,
   directives: [ROUTER_DIRECTIVES],
@@ -18,8 +21,7 @@ import {SocketController} from "./controllers/socket";
 })
 
 @RouteConfig([
-  {path: '/', component: CustomersController, useAsDefault: true, as: "CustomersPath"},
-  {path: '/customer/:id', component: CustomerController, as: "CustomerPath"},
+  {path: '/', component: EquipmentListComponent, useAsDefault: true, as: "EquipmentsPath"},
   {path: '/socket', component: SocketController, as: 'SocketPath'}
 ])
 

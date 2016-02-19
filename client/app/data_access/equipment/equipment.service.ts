@@ -8,7 +8,7 @@ let SERVER_URL = 'http://localhost:3000/api'
 @Injectable()
 export class EquipmentService{
   private equipment;
-  constructor(private _http:Http) {
+  constructor() {
 
   }
 
@@ -26,9 +26,7 @@ Commented sections are future implementation of rest api and database.
       );
     });
     */
-    return new Promise((resolve, reject) => {
-
-    })
+    return Promise.resolve(EQUIPMENTS);
   }
   addEquipment(equipment:Equipment) {
     /**
@@ -40,6 +38,7 @@ Commented sections are future implementation of rest api and database.
       );
     });
     */
+    return Promise.resolve(EQUIPMENTS.push(equipment));
   }
   deleteEquipment(equipment:Equipment) {
     /**
@@ -51,6 +50,12 @@ Commented sections are future implementation of rest api and database.
       );
     });
     */
+    for (var i = 0; i < EQUIPMENTS.length; i++) {
+      if (EQUIPMENTS[i] === equipment) {
+        EQUIPMENTS.splice(i, 1);
+        return Promise.resolve(i);
+      }
+    }
   }
 
   updateEquipment(equipment:Equipment) {
@@ -63,6 +68,11 @@ Commented sections are future implementation of rest api and database.
       );
     });
     */
+    for (var i = 0; i < EQUIPMENTS.length; i++) {
+      if (EQUIPMENTS[i] === equipment) {
+        EQUIPMENTS[i] = equipment;
+      }
+    }
   }
 
 
